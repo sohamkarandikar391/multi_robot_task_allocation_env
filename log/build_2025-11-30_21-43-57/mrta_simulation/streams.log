@@ -1,0 +1,32 @@
+[0.525s] Invoking command in '/home/sohamk3901/mrta_ws/src/mrta_simulation': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data
+[0.693s] running egg_info
+[0.705s] writing ../../build/mrta_simulation/mrta_simulation.egg-info/PKG-INFO
+[0.705s] writing dependency_links to ../../build/mrta_simulation/mrta_simulation.egg-info/dependency_links.txt
+[0.706s] writing entry points to ../../build/mrta_simulation/mrta_simulation.egg-info/entry_points.txt
+[0.706s] writing requirements to ../../build/mrta_simulation/mrta_simulation.egg-info/requires.txt
+[0.706s] writing top-level names to ../../build/mrta_simulation/mrta_simulation.egg-info/top_level.txt
+[0.735s] reading manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[0.735s] writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[0.736s] running build
+[0.736s] running build_py
+[0.736s] copying mrta_simulation/potential_field_controller.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+[0.736s] running install
+[0.740s] running install_lib
+[0.751s] copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/potential_field_controller.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+[0.751s] byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/manual_task_commander.py to manual_task_commander.cpython-312.pyc
+[0.752s] byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/potential_field_controller.py to potential_field_controller.cpython-312.pyc
+[0.752s]   File "/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/manual_task_commander.py", line 52
+[0.752s]     self.get_logger().info(f'Loaded {len(self.robots)} robots and {len{self.tasks}} tasks')
+[0.752s]                                                                    ^^^^^^^^^^^^^^^
+[0.753s] SyntaxError: invalid syntax. Perhaps you forgot a comma?
+[0.753s] 
+[0.753s] running install_data
+[0.754s] running install_egg_info
+[0.765s] removing '/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info' (and everything under it)
+[0.765s] Copying ../../build/mrta_simulation/mrta_simulation.egg-info to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info
+[0.766s] running install_scripts
+[0.843s] Installing manual_task_commander script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.843s] Installing robot_controller script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.843s] Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.844s] writing list of installed files to '/home/sohamk3901/mrta_ws/build/mrta_simulation/install.log'
+[0.859s] Invoked command in '/home/sohamk3901/mrta_ws/src/mrta_simulation' returned '0': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data

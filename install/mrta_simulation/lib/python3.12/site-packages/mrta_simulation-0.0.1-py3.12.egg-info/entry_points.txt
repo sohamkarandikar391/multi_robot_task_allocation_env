@@ -1,0 +1,4 @@
+[console_scripts]
+manual_task_commander = mrta_simulation.manual_task_commander:main
+robot_controller = mrta_simulation.robot_controller_node:main
+spawn_scenario = mrta_simulation.scenario_spawner:main

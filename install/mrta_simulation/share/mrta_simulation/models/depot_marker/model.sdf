@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="depot_marker">
+    <static>true</static>
+    <link name="link">
+      
+      <visual name="visual">
+        <geometry>
+          <cone>
+            <radius>0.3</radius>
+            <length>0.6</length>
+          </cone>
+        </geometry>
+        <material>
+          <ambient>0 1 0 1</ambient>
+          <diffuse>0 1 0 1</diffuse>
+        </material>
+      </visual>
+    
+    
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.1</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      
+    </link>
+  </model>
+</sdf>

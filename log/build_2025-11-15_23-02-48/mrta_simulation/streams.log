@@ -1,0 +1,23 @@
+[1.106s] Invoking command in '/home/sohamk3901/mrta_ws/src/mrta_simulation': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data
+[1.294s] running egg_info
+[1.306s] writing ../../build/mrta_simulation/mrta_simulation.egg-info/PKG-INFO
+[1.306s] writing dependency_links to ../../build/mrta_simulation/mrta_simulation.egg-info/dependency_links.txt
+[1.306s] writing entry points to ../../build/mrta_simulation/mrta_simulation.egg-info/entry_points.txt
+[1.307s] writing requirements to ../../build/mrta_simulation/mrta_simulation.egg-info/requires.txt
+[1.307s] writing top-level names to ../../build/mrta_simulation/mrta_simulation.egg-info/top_level.txt
+[1.332s] reading manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[1.333s] writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[1.333s] running build
+[1.333s] running build_py
+[1.333s] running install
+[1.337s] running install_lib
+[1.349s] running install_data
+[1.349s] copying worlds/simple_world.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+[1.349s] copying config/scenario_simple.yaml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+[1.350s] running install_egg_info
+[1.363s] removing '/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info' (and everything under it)
+[1.363s] Copying ../../build/mrta_simulation/mrta_simulation.egg-info to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info
+[1.364s] running install_scripts
+[1.435s] Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[1.435s] writing list of installed files to '/home/sohamk3901/mrta_ws/build/mrta_simulation/install.log'
+[1.450s] Invoked command in '/home/sohamk3901/mrta_ws/src/mrta_simulation' returned '0': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data

@@ -1,0 +1,56 @@
+[0.461s] Invoking command in '/home/sohamk3901/mrta_ws/src/mrta_simulation': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data
+[0.614s] running egg_info
+[0.614s] creating ../../build/mrta_simulation/mrta_simulation.egg-info
+[0.625s] writing ../../build/mrta_simulation/mrta_simulation.egg-info/PKG-INFO
+[0.625s] writing dependency_links to ../../build/mrta_simulation/mrta_simulation.egg-info/dependency_links.txt
+[0.626s] writing entry points to ../../build/mrta_simulation/mrta_simulation.egg-info/entry_points.txt
+[0.626s] writing requirements to ../../build/mrta_simulation/mrta_simulation.egg-info/requires.txt
+[0.626s] writing top-level names to ../../build/mrta_simulation/mrta_simulation.egg-info/top_level.txt
+[0.626s] writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[0.650s] reading manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[0.651s] writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+[0.651s] running build
+[0.651s] running build_py
+[0.651s] creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build
+[0.651s] creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib
+[0.651s] creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+[0.651s] copying mrta_simulation/__init__.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+[0.651s] copying mrta_simulation/scenario_spawner.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+[0.651s] running install
+[0.655s] running install_lib
+[0.666s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+[0.666s] copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/__init__.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+[0.666s] copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/scenario_spawner.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+[0.666s] byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/__init__.py to __init__.cpython-312.pyc
+[0.666s] byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/scenario_spawner.py to scenario_spawner.cpython-312.pyc
+[0.667s] running install_data
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index/packages
+[0.668s] copying resource/mrta_simulation -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index/packages
+[0.668s] copying package.xml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+[0.668s] copying launch/test_launch.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+[0.668s] copying worlds/simple_world.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+[0.668s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+[0.669s] copying config/scenario_simple.yaml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+[0.669s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models
+[0.669s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+[0.669s] copying models/depot_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+[0.669s] copying models/depot_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+[0.669s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+[0.669s] copying models/task_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+[0.669s] copying models/task_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+[0.669s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+[0.669s] copying models/simple_turtlebot/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+[0.669s] copying models/simple_turtlebot/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+[0.670s] creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+[0.670s] copying models/simple_quadrotor/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+[0.670s] copying models/simple_quadrotor/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+[0.670s] running install_egg_info
+[0.680s] Copying ../../build/mrta_simulation/mrta_simulation.egg-info to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info
+[0.681s] running install_scripts
+[0.754s] Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.754s] writing list of installed files to '/home/sohamk3901/mrta_ws/build/mrta_simulation/install.log'
+[0.768s] Invoked command in '/home/sohamk3901/mrta_ws/src/mrta_simulation' returned '0': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrta_simulation build --build-base /home/sohamk3901/mrta_ws/build/mrta_simulation/build install --record /home/sohamk3901/mrta_ws/build/mrta_simulation/install.log --single-version-externally-managed install_data

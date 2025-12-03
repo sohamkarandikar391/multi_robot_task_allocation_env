@@ -1,0 +1,57 @@
+running egg_info
+creating ../../build/mrta_simulation/mrta_simulation.egg-info
+writing ../../build/mrta_simulation/mrta_simulation.egg-info/PKG-INFO
+writing dependency_links to ../../build/mrta_simulation/mrta_simulation.egg-info/dependency_links.txt
+writing entry points to ../../build/mrta_simulation/mrta_simulation.egg-info/entry_points.txt
+writing requirements to ../../build/mrta_simulation/mrta_simulation.egg-info/requires.txt
+writing top-level names to ../../build/mrta_simulation/mrta_simulation.egg-info/top_level.txt
+writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+reading manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+writing manifest file '../../build/mrta_simulation/mrta_simulation.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build
+creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib
+creating /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+copying mrta_simulation/__init__.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+copying mrta_simulation/scenario_spawner.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+copying mrta_simulation/field_based_controller.py -> /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation
+running install
+running install_lib
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/__init__.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/scenario_spawner.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+copying /home/sohamk3901/mrta_ws/build/mrta_simulation/build/lib/mrta_simulation/field_based_controller.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation
+byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/scenario_spawner.py to scenario_spawner.cpython-312.pyc
+byte-compiling /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/field_based_controller.py to field_based_controller.cpython-312.pyc
+running install_data
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index/packages
+copying resource/mrta_simulation -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index/packages
+copying package.xml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+copying launch/test_launch.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+copying worlds/simple_world.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+copying config/scenario_simple.yaml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+copying models/depot_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+copying models/depot_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+copying models/task_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+copying models/task_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+copying models/simple_turtlebot/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+copying models/simple_turtlebot/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+creating /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+copying models/simple_quadrotor/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+copying models/simple_quadrotor/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+running install_egg_info
+Copying ../../build/mrta_simulation/mrta_simulation.egg-info to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation-0.0.1-py3.12.egg-info
+running install_scripts
+Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+writing list of installed files to '/home/sohamk3901/mrta_ws/build/mrta_simulation/install.log'

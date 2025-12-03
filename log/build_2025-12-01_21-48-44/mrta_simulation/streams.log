@@ -1,0 +1,38 @@
+[0.516s] Invoking command in '/home/sohamk3901/mrta_ws/build/mrta_simulation': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sohamk3901/mrta_ws/build/mrta_simulation/build --no-deps symlink_data --force
+[0.715s] running develop
+[0.827s] running egg_info
+[0.837s] writing mrta_simulation.egg-info/PKG-INFO
+[0.837s] writing dependency_links to mrta_simulation.egg-info/dependency_links.txt
+[0.838s] writing entry points to mrta_simulation.egg-info/entry_points.txt
+[0.838s] writing requirements to mrta_simulation.egg-info/requires.txt
+[0.838s] writing top-level names to mrta_simulation.egg-info/top_level.txt
+[0.863s] reading manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+[0.863s] writing manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+[0.874s] running build_ext
+[0.876s] Creating /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta-simulation.egg-link (link to .)
+[0.876s] Installing manual_task_commander script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.876s] Installing robot_controller script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.876s] Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.876s] 
+[0.876s] Installed /home/sohamk3901/mrta_ws/build/mrta_simulation
+[0.876s] running symlink_data
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/resource/mrta_simulation -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/ament_index/resource_index/packages
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/package.xml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/launch/robot_controllers.launch.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/launch/test_launch.py -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/launch
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/worlds/simple_world.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/worlds/test_robot.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/worlds
+[0.877s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/config/scenario_simple.yaml -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/config
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/depot_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/depot_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/depot_marker
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/task_marker/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/task_marker/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/task_marker
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/simple_turtlebot/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/simple_turtlebot/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_turtlebot
+[0.878s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/simple_quadrotor/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+[0.879s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/simple_quadrotor/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/simple_quadrotor
+[0.879s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/short_obstacle/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/short_obstacle
+[0.879s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/short_obstacle/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/short_obstacle
+[0.879s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/tall_obstacle/model.config -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/tall_obstacle
+[0.879s] symbolically linking /home/sohamk3901/mrta_ws/build/mrta_simulation/models/tall_obstacle/model.sdf -> /home/sohamk3901/mrta_ws/install/mrta_simulation/share/mrta_simulation/models/tall_obstacle
+[0.896s] Invoked command in '/home/sohamk3901/mrta_ws/build/mrta_simulation' returned '0': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sohamk3901/mrta_ws/build/mrta_simulation/build --no-deps symlink_data --force
