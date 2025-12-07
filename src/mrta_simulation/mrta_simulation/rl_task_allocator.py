@@ -803,29 +803,28 @@ class RLTaskAllocator(Node):
             self.get_logger().info("🎉 SIMULATION COMPLETE - ALL TASKS DONE & ROBOTS HOME")
             self.get_logger().info("==================================================")
             
-            # Wait a split second for the log to print
-            time.sleep(5.0)
-            # subprocess.run(["pkill", "-9", "-f", "gzclient"])
+            time.sleep(10.0)
+            subprocess.run(["pkill", "-9", "-f", "gzclient"])
                 
-            # subprocess.run(["pkill", "-9", "-f", "gzserver"])
+            subprocess.run(["pkill", "-9", "-f", "gzserver"])
             
-            # subprocess.run(["pkill", "-9", "-f", "gazebo"])
+            subprocess.run(["pkill", "-9", "-f", "gazebo"])
             
-            # subprocess.run(["pkill", "-9", "-f", "ign gazebo"])
-            # subprocess.run(["pkill", "-9", "-f", "gz sim"])
-            # subprocess.run(["pkill", "-9", "-f", "ruby"])
+            subprocess.run(["pkill", "-9", "-f", "ign gazebo"])
+            subprocess.run(["pkill", "-9", "-f", "gz sim"])
+            subprocess.run(["pkill", "-9", "-f", "ruby"])
             
-            # subprocess.run(["pkill", "-9", "-f", "robot_controller"])
+            subprocess.run(["pkill", "-9", "-f", "robot_controller"])
             
-            # self.get_logger().info("Kill commands sent.")
-            # self.get_logger().info("Closing Gazebo...")
-            # os.system("pkill -f gazebo")     
-            # os.system("pkill -f gzserver")    
-            # os.system("pkill -f gzclient")   
-            # os.system("pkill -f robot_controller") 
+            self.get_logger().info("Kill commands sent.")
+            self.get_logger().info("Closing Gazebo...")
+            os.system("pkill -f gazebo")     
+            os.system("pkill -f gzserver")    
+            os.system("pkill -f gzclient")   
+            os.system("pkill -f robot_controller") 
             
-            # rclpy.shutdown()
-            # sys.exit(0)
+            rclpy.shutdown()
+            sys.exit(0)
 
     def allocate_greedy(self):
         self.get_logger().info('Using greedy allocation (fallsafe)')
