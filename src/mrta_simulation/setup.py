@@ -30,6 +30,12 @@ setup(
             glob('models/short_obstacle/*')),
         (os.path.join('share', package_name, 'models', 'tall_obstacle'),  
             glob('models/tall_obstacle/*')),
+        (os.path.join('share', package_name, 'models/simple_turtlebot_red'), 
+            glob('models/simple_turtlebot_red/*')),
+        (os.path.join('share', package_name, 'models/simple_turtlebot_blue'), 
+            glob('models/simple_turtlebot_blue/*')),
+        (os.path.join('share', package_name, 'models/simple_turtlebot_green'), 
+            glob('models/simple_turtlebot_green/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -43,6 +49,7 @@ setup(
         'spawn_scenario = mrta_simulation.scenario_spawner:main',
         'manual_task_commander = mrta_simulation.manual_task_commander:main',
         'robot_controller = mrta_simulation.robot_controller_node:main',
+        'rl_task_allocator = mrta_simulation.rl_task_allocator:main' 
     ],
 },
 )

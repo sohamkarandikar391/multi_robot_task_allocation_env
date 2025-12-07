@@ -1,0 +1,20 @@
+[0.501s] Invoking command in '/home/sohamk3901/mrta_ws/build/mrta_simulation': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sohamk3901/mrta_ws/build/mrta_simulation/build --no-deps symlink_data
+[0.699s] running develop
+[0.822s] running egg_info
+[0.834s] writing mrta_simulation.egg-info/PKG-INFO
+[0.835s] writing dependency_links to mrta_simulation.egg-info/dependency_links.txt
+[0.835s] writing entry points to mrta_simulation.egg-info/entry_points.txt
+[0.835s] writing requirements to mrta_simulation.egg-info/requires.txt
+[0.835s] writing top-level names to mrta_simulation.egg-info/top_level.txt
+[0.860s] reading manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+[0.860s] writing manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+[0.874s] running build_ext
+[0.874s] Creating /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta-simulation.egg-link (link to .)
+[0.875s] Installing manual_task_commander script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.875s] Installing rl_task_allocator script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.875s] Installing robot_controller script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.875s] Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+[0.875s] 
+[0.875s] Installed /home/sohamk3901/mrta_ws/build/mrta_simulation
+[0.875s] running symlink_data
+[0.892s] Invoked command in '/home/sohamk3901/mrta_ws/build/mrta_simulation' returned '0': PYTHONPATH=/home/sohamk3901/mrta_ws/build/mrta_simulation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sohamk3901/mrta_ws/build/mrta_simulation/build --no-deps symlink_data

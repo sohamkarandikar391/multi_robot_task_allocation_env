@@ -156,11 +156,12 @@ class ScenarioSpawner(Node):
         
         for species_name, species_data in self.config['species'].items():
             robot_type = species_data['type']
+            model_name = species_data.get('model', 'simple_turtlebot')
             count = species_data['count']
             depot_pos = species_data['depot_position']
             
             # Circle radius around depot
-            radius = 1.0  # 1 meter radius circle
+            radius = 1.5  # 1 meter radius circle
             
             for i in range(count):
                 # Calculate angle for circular arrangement
@@ -174,25 +175,25 @@ class ScenarioSpawner(Node):
                 pose.position = Point(
                     x=depot_pos[0] + offset_x,
                     y=depot_pos[1] + offset_y,
-                    z=0.15 if robot_type == "turtlebot3_burger" else (depot_pos[2]+1.0)
+                    z=0.15
                 )
                 pose.orientation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)
                 
                 robot_name = f"{species_name}_{i}"
                 
                 if robot_type == "turtlebot3_burger":
-                    self.spawn_turtlebot(robot_name, pose)
+                    self.spawn_turtlebot(robot_name, pose, model_name)
                 elif robot_type == "crazyflie":
                     self.spawn_quadrotor(robot_name, pose)
                 else:
                     self.get_logger().warn(f"Unknown robot type: {robot_type} for {robot_name}")
     
-    def spawn_turtlebot(self, name, pose):
+    def spawn_turtlebot(self, name, pose, model_name='simple_turtlebot'):
         """
         Spawn a turtlebot and REMAP its topics so it can be moved individually.
         """
 
-        sdf_content = self.load_model_sdf('simple_turtlebot')
+        sdf_content = self.load_model_sdf(model_name)
 
         new_cmd_vel = f"<topic>/model/{name}/cmd_vel</topic>"
         sdf_content = sdf_content.replace("<topic>cmd_vel</topic>", new_cmd_vel)
@@ -205,6 +206,33 @@ class ScenarioSpawner(Node):
     def spawn_quadrotor(self, name, pose):
         """Spawn a quadrotor from model file"""
         quadrotor_sdf = self.load_model_sdf('simple_quadrotor')
+
+        new_namespace = f"model/{name}"
+        quadrotor_sdf = quadrotor_sdf.replace("__ROBOT_NAMESPACE__", new_namespace)
+
+        # new_cmd_vel = f"<commandSubTopic>/model/{name}/cmd_vel</commandSubTopic>"
+        # quadrotor_sdf = quadrotor_sdf.replace("<commandSubTopic>cmd_vel</commandSubTopic>", new_cmd_vel)
+
+        new_odom = f"<odom_topic>/model/{name}/odometry</odom_topic>"
+        quadrotor_sdf = quadrotor_sdf.replace("<odom_topic>odom</odom_topic>", new_odom)
+
+        new_enable = f"<enableSubTopic>/model/{name}/enable</enableSubTopic>"
+        quadrotor_sdf = quadrotor_sdf.replace("<enableSubTopic>enable</enableSubTopic>", new_enable)
+
+        # new_motor_cmd = f"<commandSubTopic>/model/{name}/command/motor_speed</commandSubTopic>"
+        # quadrotor_sdf = quadrotor_sdf.replace("<commandSubTopic>command/motor_speed</commandSubTopic>", new_motor_cmd)
+
+        if "PosePublisher" not in quadrotor_sdf:
+            pose_plugin = """
+            <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+                <publish_link_pose>true</publish_link_pose>
+                <publish_nested_model_pose>true</publish_nested_model_pose>
+                <use_pose_vector_msg>true</use_pose_vector_msg>
+                <static_update_frequency>100</static_update_frequency>
+            </plugin>
+            """
+            quadrotor_sdf = quadrotor_sdf.replace("</model>", pose_plugin + "</model>")
+        self.get_logger().info(f"Spawning Drone: {name}")
         self.spawn_entity(name, quadrotor_sdf, pose)
 
 def main(args=None):

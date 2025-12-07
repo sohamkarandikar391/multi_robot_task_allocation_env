@@ -1,2 +1,0 @@
-/home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta_simulation/robot_controller_node.py:151: SyntaxWarning: 'float' object is not callable; perhaps you missed a comma?
-  t4 = +1.0 - 2.0 (qy * qy + qz * qz)

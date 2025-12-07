@@ -4,56 +4,123 @@ world_config:
   size_y: 20.0
   
 species:
-  crazyflieX:
-    type: "crazyflie"
+  # crazyflieX:
+  #   type: "crazyflie"
+  #   count: 0
+  #   depot_position: [-7.0, -7.0, 1.5] 
+  #   skills: [1, 1, 0, 0, 0]
+  #   color: [1.0, 0.0, 0.0, 1.0]
+    
+  # turtlebotX:
+  #   type: "turtlebot3_burger"
+  #   count: 0
+  #   depot_position: [7.0, 7.0, 0.0]  
+  #   skills: [0, 0, 1, 1, 1]
+  #   color: [0.0, 0.0, 1.0, 1.0]
+
+  red_turtlebot:
+    type: "turtlebot3_burger"
+    model: "simple_turtlebot_red"
     count: 4
-    depot_position: [-7.0, -7.0, 1.5] 
-    skills: [1, 1, 0, 0, 0]
+    depot_position: [-4.2, -8.5, 0.0]
+    skills: [1, 0, 0, 0, 1]
     color: [1.0, 0.0, 0.0, 1.0]
     
-  turtlebotX:
+  blue_turtlebot:
     type: "turtlebot3_burger"
+    model: "simple_turtlebot_blue"
     count: 4
-    depot_position: [7.0, 7.0, 0.0]  
-    skills: [0, 0, 1, 1, 1]
+    depot_position: [8.1, -3.4, 0.0]
+    skills: [0, 1, 0, 0, 1]
     color: [0.0, 0.0, 1.0, 1.0]
+    
+  green_turtlebot:
+    type: "turtlebot3_burger"
+    model: "simple_turtlebot_green"
+    count: 3
+    depot_position: [-7.8, 6.2, 0.0]
+    skills: [0, 0, 1, 1, 0]
+    color: [0.0, 1.0, 0.0, 1.0]
 
 # Tasks spread in a better pattern
 tasks:
   - id: 0
-    position: [-5.0, 0.0, 0.0]  # Left-center
+    position: [2.5, 5.1, 0.0]  # Left-center
     requirements: [1, 0, 0, 1, 0]
-    duration: 10.0
-    
-  - id: 1
-    position: [5.0, 0.0, 0.0]  # Right-center
-    requirements: [0, 1, 1, 0, 0]
     duration: 15.0
     
-  - id: 2
-    position: [0.0, 5.0, 0.0]  # Top-center
-    requirements: [1, 1, 0, 0, 1]
-    duration: 12.0
+  - id: 1
+    position: [-8.4, 1.2, 0.0]  # Right-center
+    requirements: [0, 1, 1, 0, 0]
+    duration: 30.0
     
+  - id: 2
+    position: [6.7, 9.3, 0.0]  # Top-center
+    requirements: [1, 1, 0, 0, 1]
+    duration: 10.0
+  
   - id: 3
-    position: [0.0, -5.0, 0.0]  # Bottom-center
+    position: [0.5, -8.8, 0.0]  # Bottom-center
     requirements: [0, 0, 1, 1, 0]
-    duration: 8.0
+    duration: 18.0
+  
+  - id: 4
+    position: [-3.3, -2.1, 0.0]  # Bottom-center
+    requirements: [0, 0, 1, 1, 1]
+    duration: 25.0
 
 
 obstacles:
-  # Short obstacles - block ground robots, allow aerial
-  short_obs_1:
-    model: "short_obstacle"
-    position: [-3.0, -3.0, 0.0]
-    # z=0 because model.sdf positions the box correctly internally
-    
-  short_obs_2:
-    model: "short_obstacle"
-    position: [3.0, 3.0, 0.0]
-    
-  # Tall obstacle - blocks everyone
-  tall_obs_1:
-    model: "tall_obstacle"
-    position: [0.0, 0.0, 0.0]
+  # Cluster 1 (Top Left)
+  obs_1:
+    model: 'short_obstacle'
+    position: [-5.5, 4.5, 0.0]
+  obs_2:
+    model: 'tall_obstacle'
+    position: [-4.0, 8.0, 0.0]
+  obs_3:
+    model: 'short_obstacle'
+    position: [-2.0, 4.0, 0.0]
+
+  # Cluster 2 (Bottom Right)
+  obs_4:
+    model: 'short_obstacle'
+    position: [6.0, -6.0, 0.0]
+  obs_5:
+    model: 'tall_obstacle'
+    position: [6.0, -2.0, 0.0]
+  obs_6:
+    model: 'short_obstacle'
+    position: [5.5, -9.0, 0.0]
+
+  # Scattered Field (Middle areas)
+  obs_7:
+    model: 'short_obstacle'
+    position: [-2.5, -5.5, 0.0]
+  obs_8:
+    model: 'tall_obstacle'
+    position: [3.5, 2.5, 0.0]
+  obs_9:
+    model: 'short_obstacle'
+    position: [-5.0, 1.0, 0.0]
+  obs_10:
+    model: 'tall_obstacle'
+    position: [1.0, -5.0, 0.0]
+  
+  # Outer Ring
+  obs_11:
+    model: 'short_obstacle'
+    position: [9.5, 0.0, 0.0]
+  obs_12:
+    model: 'short_obstacle'
+    position: [-9.5, -9.5, 0.0]
+  obs_13:
+    model: 'tall_obstacle'
+    position: [0.0, -0.5, 0.0]
+  obs_14:
+    model: 'short_obstacle'
+    position: [-8.5, -2.5, 0.0]
+  obs_15:
+    model: 'tall_obstacle'
+    position: [6.5, 4.5, 0.0]
     

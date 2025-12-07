@@ -165,7 +165,7 @@ def generate_launch_description():
         if 'species' in config:
             for species_name, data in config['species'].items():
                 count = data.get('count', 0)
-                
+                is_aerial = (data['type'] == "crazyflie")
                 for i in range(count):
                     robot_name = f"{species_name}_{i}"
                     
@@ -193,6 +193,14 @@ def generate_launch_description():
                         (f'/model/{robot_name}/cmd_vel', f'/{robot_name}/cmd_vel')
                     )
                     bridge_remappings.append((f'/model/{robot_name}/pose', f'/{robot_name}/ground_truth'))
+
+                    if is_aerial:
+                        bridge_arguments.append(
+                            f'/model/{robot_name}/enable@std_msgs/msg/Bool@gz.msgs.Boolean'
+                        )
+                        bridge_remappings.append(
+                            (f'/model/{robot_name}/enable', f'/{robot_name}/enable')
+                        )
 
 
     # 2. GAZEBO SIMULATION
@@ -248,7 +256,7 @@ def generate_launch_description():
         if 'species' in config:
             for species_name, data in config['species'].items():
                 count = data.get('count', 0)
-                is_aerial = (species_name == "crazyflie") # Check if drone
+                is_aerial = (data['type'] == "crazyflie")
                 
                 for i in range(count):
                     robot_name = f"{species_name}_{i}"
@@ -269,12 +277,24 @@ def generate_launch_description():
         period=10.0,
         actions=robot_controller_nodes
     )
-
+    
+    rl_allocator = TimerAction(
+        period=12.0,
+        actions=[
+            Node(
+                package='mrta_simulation',
+                executable='rl_task_allocator',
+                name='rl_task_allocator',
+                output='screen'
+            )
+        ]
+    )
 
     return LaunchDescription([
         gazebo,
         bridge_service,
         spawn_scenario,
         robot_bridge_node,
-        start_controllers
+        start_controllers,
+        rl_allocator
     ] )

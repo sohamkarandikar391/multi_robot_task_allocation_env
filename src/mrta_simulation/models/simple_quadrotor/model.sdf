@@ -7,15 +7,12 @@
       <pose>0 0 0 0 0 0</pose>
       
       <inertial>
-        <mass>0.027</mass>
+        <mass>1.0</mass>
         <inertia>
-          <ixx>0.00001</ixx>
-          <ixy>0.0</ixy>
+          <ixx>0.1</ixx> <ixy>0.0</ixy>
           <ixz>0.0</ixz>
-          <iyy>0.00001</iyy>
-          <iyz>0.0</iyz>
-          <izz>0.00001</izz>
-        </inertia>
+          <iyy>0.1</iyy> <iyz>0.0</iyz>
+          <izz>0.1</izz> </inertia>
       </inertial>
       
       <visual name="body">
@@ -212,6 +209,7 @@
         <limit>
           <lower>-1e+12</lower>
           <upper>1e+12</upper>
+          <effort>10.0</effort> 
         </limit>
       </axis>
     </joint>
@@ -224,6 +222,7 @@
         <limit>
           <lower>-1e+12</lower>
           <upper>1e+12</upper>
+          <effort>10.0</effort> 
         </limit>
       </axis>
     </joint>
@@ -236,6 +235,7 @@
         <limit>
           <lower>-1e+12</lower>
           <upper>1e+12</upper>
+          <effort>10.0</effort> 
         </limit>
       </axis>
     </joint>
@@ -248,6 +248,7 @@
         <limit>
           <lower>-1e+12</lower>
           <upper>1e+12</upper>
+          <effort>10.0</effort> 
         </limit>
       </axis>
     </joint>
@@ -261,7 +262,7 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>1000</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
+      <motorConstant>8.54858e-04</motorConstant>
       <momentConstant>0.016</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>0</motorNumber>
@@ -280,7 +281,7 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>1000</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
+      <motorConstant>8.54858e-04</motorConstant>
       <momentConstant>0.016</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>1</motorNumber>
@@ -299,7 +300,7 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>1000</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
+      <motorConstant>8.54858e-04</motorConstant>
       <momentConstant>0.016</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>2</motorNumber>
@@ -318,7 +319,7 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>1000</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
+      <motorConstant>8.54858e-04</motorConstant>
       <momentConstant>0.016</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>3</motorNumber>
@@ -329,15 +330,47 @@
     </plugin>
 
     <plugin
-      filename="gz-sim-multicopter-velocity-control-system"
+      filename="gz-sim-multicopter-control-system"
       name="gz::sim::systems::MulticopterVelocityControl">
+      <robotNamespace>__ROBOT_NAMESPACE__</robotNamespace>
       <commandSubTopic>cmd_vel</commandSubTopic>
       <enableSubTopic>enable</enableSubTopic>
       <comLinkName>base_link</comLinkName>
-      <velocityGain>2.7 2.7 2.7</velocityGain>
-      <attitudeGain>2.2 2.2 0.4</attitudeGain>
-      <angularRateGain>0.4 0.4 0.2</angularRateGain>
-      <maximumLinearAcceleration>2 2 2</maximumLinearAcceleration>
+      <velocityGain>2.5 2.5 2.5</velocityGain>
+      <attitudeGain>2.0 2.0 1.5</attitudeGain>
+      <angularRateGain>0.2 0.2 0.15</angularRateGain>
+      <maximumLinearAcceleration>5 5 5</maximumLinearAcceleration>
+
+      <rotorConfiguration>
+        <rotor>
+          <jointName>rotor_0_joint</jointName>
+          <forceConstant>8.54858e-06</forceConstant>
+          <momentConstant>0.016</momentConstant>
+          <direction>1</direction>
+        </rotor>
+        
+        <rotor>
+          <jointName>rotor_1_joint</jointName>
+          <forceConstant>8.54858e-06</forceConstant>
+          <momentConstant>0.016</momentConstant>
+          <direction>-1</direction> 
+        </rotor>
+        
+        <rotor>
+          <jointName>rotor_2_joint</jointName>
+          <forceConstant>8.54858e-06</forceConstant>
+          <momentConstant>0.016</momentConstant>
+          <direction>1</direction>
+        </rotor>
+        
+        <rotor>
+          <jointName>rotor_3_joint</jointName>
+          <forceConstant>8.54858e-06</forceConstant>
+          <momentConstant>0.016</momentConstant>
+          <direction>-1</direction>
+        </rotor>
+      </rotorConfiguration>
+
     </plugin>
 
     <plugin

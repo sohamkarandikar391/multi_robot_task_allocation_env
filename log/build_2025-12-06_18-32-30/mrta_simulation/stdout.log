@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing mrta_simulation.egg-info/PKG-INFO
+writing dependency_links to mrta_simulation.egg-info/dependency_links.txt
+writing entry points to mrta_simulation.egg-info/entry_points.txt
+writing requirements to mrta_simulation.egg-info/requires.txt
+writing top-level names to mrta_simulation.egg-info/top_level.txt
+reading manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+writing manifest file 'mrta_simulation.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/python3.12/site-packages/mrta-simulation.egg-link (link to .)
+Installing manual_task_commander script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+Installing rl_task_allocator script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+Installing robot_controller script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+Installing spawn_scenario script to /home/sohamk3901/mrta_ws/install/mrta_simulation/lib/mrta_simulation
+
+Installed /home/sohamk3901/mrta_ws/build/mrta_simulation
+running symlink_data

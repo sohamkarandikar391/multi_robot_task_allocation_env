@@ -4,7 +4,7 @@ import numpy as np
 from geometry_msgs.msg import Twist
 
 class PotentialFieldController:
-    def __init__(self, k_att=1.5, k_rep=5.0, d_safe=1, d_influence=3.0, max_vel=0.5, max_acc=2.0, dt = 0.1, mass=10):
+    def __init__(self, k_att=1.5, k_rep=8.0, d_safe=1, d_influence=3.0, max_vel=0.5, max_acc=2.0, dt = 0.1, mass=10):
         self.k_att = k_att
         self.k_rep = k_rep
         self.d_safe = d_safe
@@ -45,22 +45,21 @@ class PotentialFieldController:
             magnitude = self.k_rep * (1.0 / distance - 1.0/self.d_influence) * (1.0 / (distance**2))
 
         if is_robot:
-            magnitude *= 1.5
+            magnitude *= 2
 
         direction = diff/np.linalg.norm(diff)
         direction_away = direction
         force = magnitude*direction
         force_swirl = 0
-        if is_robot:
-            tangent_vector = np.array([-direction_away[1], direction_away[0]])
-            vec_to_goal = goal_pos - current_pos
-            cross_prod = direction_away[0] * vec_to_goal[1] - direction_away[1] * vec_to_goal[0]
-            swirl_strength = 1
+        tangent_vector = np.array([-direction_away[1], direction_away[0]])
+        vec_to_goal = goal_pos - current_pos
+        cross_prod = direction_away[0] * vec_to_goal[1] - direction_away[1] * vec_to_goal[0]
+        swirl_strength = 1.2
 
-            if cross_prod > 0:
-                force_swirl = magnitude * swirl_strength * tangent_vector
-            else:
-                force_swirl = magnitude * swirl_strength * -tangent_vector 
+        if cross_prod > 0:
+            force_swirl = magnitude * swirl_strength * tangent_vector
+        else:
+            force_swirl = magnitude * swirl_strength * -tangent_vector 
 
 
         return force + force_swirl
