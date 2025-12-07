@@ -517,7 +517,7 @@ class RLTaskAllocator(Node):
         self.task_assignment_pub.publish(msg)
         self.current_assignments[robot_id] = 'DEPOT'
         
-        self.get_logger().info(f'🏠 {robot_id} returning to Depot at {depot_pos}')
+        self.get_logger().info(f'{robot_id} returning to Depot at {depot_pos}')
 
     def compute_full_routes_with_rl(self):
         # 1. Safety Check: Do we have data from ROS yet?
@@ -970,7 +970,7 @@ class RLTaskAllocator(Node):
             if self.check_team_skills(task_id):
                 duration = self.tasks[task_id]['duration']
                 self.ongoing_tasks[task_id] = current_time + duration
-                self.get_logger().info(f"✅ Task {task_id} STARTED! Team complete.")
+                self.get_logger().info(f" Task {task_id} STARTED! Team complete.")
                 
                 # Publish start trigger
                 msg = String()
@@ -1056,9 +1056,9 @@ class RLTaskAllocator(Node):
             # If we found a match, update the route!
             if best_task is not None:
                 self.robot_routes[robot_id] = [best_task]
-                self.get_logger().info(f"➕ Forced {robot_id} to assist with Task {best_task}")
+                self.get_logger().info(f" Forced {robot_id} to assist with Task {best_task}")
             else:
-                 self.get_logger().warn(f"⚠️ Could not find useful work for {robot_id}")
+                 self.get_logger().warn(f" Could not find useful work for {robot_id}")
 
     def assign_next_task(self, robot_id, route):
         while len(route) > 0 and route[0] in self.completed_tasks:
@@ -1086,7 +1086,7 @@ class RLTaskAllocator(Node):
         self.task_start_times[robot_id] = time.time()
         
         self.get_logger().info(
-            f'📋 {robot_id} → Task {task_id} @ {task_data["position"]}'
+            f' {robot_id} → Task {task_id} @ {task_data["position"]}'
         )
 
 def main(args = None):

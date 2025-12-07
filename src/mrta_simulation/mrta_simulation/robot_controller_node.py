@@ -361,7 +361,7 @@ class RobotControllerNode(Node):
             # Transition to Waiting
             if self.state == "MOVING":
                 self.state = "WAITING_FOR_TEAM"
-                self.get_logger().info(f"⏳ Arrived at Task {self.current_task_id}. Waiting for team...")
+                self.get_logger().info(f"Arrived at Task {self.current_task_id}. Waiting for team...")
                 self.send_status("ARRIVED")
             
             return
