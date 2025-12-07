@@ -2,7 +2,7 @@
 
 A ROS2 + Gazebo simulation framework for multi-robot task allocation using deep reinforcement learning, inspired by the paper [*"Heterogeneous Multi-Robot Task Allocation: A Deep Reinforcement Learning Approach"*](https://www.marmotlab.org/publications/73-RAL2025-HetMRTA.pdf).
 
-![Simulation Overview]((https://raw.githubusercontent.com/sohamkarandikar391/multi_robot_task_allocation_env/tree/main/docs/scenario_screenshot.png))
+![Simulation Overview](https://raw.githubusercontent.com/sohamkarandikar391/multi_robot_task_allocation_env/main/docs/scenario_screenshot.png)
 *Multi-robot team collaborating on spatially distributed tasks with obstacles*
 
 ---
@@ -77,7 +77,7 @@ This implementation is based on the work by **Chen et al.**:
 > **"Heterogeneous Multi-Robot Task Allocation: A Deep Reinforcement Learning Approach"**  
 > *arXiv:2301.09932, 2023*
 
-![Paper Method Overview](https://raw.githubusercontent.com/sohamkarandikar391/multi_robot_task_allocation_env/tree/main/docs/paper_method.gif)
+![Paper Method Overview](https://raw.githubusercontent.com/sohamkarandikar391/multi_robot_task_allocation_env/main/docs/paper_method.gif)
 *Attention-based neural network architecture for task allocation (from original paper)*
 
 ### Key Contributions from Paper:
