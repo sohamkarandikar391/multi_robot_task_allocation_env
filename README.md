@@ -125,8 +125,7 @@ git clone https://github.com/yourusername/mrta_simulation.git
 
 # Clone RL paper implementation
 cd mrta_simulation
-git clone https://github.com/original-paper-repo/HeteroMRTA.git
-
+[git clone https://github.com/marmotlab/HeteroMRTA/tree/main]
 # Build workspace
 cd ~/mrta_ws
 colcon build --symlink-install
