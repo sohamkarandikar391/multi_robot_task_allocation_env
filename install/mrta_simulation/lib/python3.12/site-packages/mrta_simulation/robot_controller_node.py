@@ -10,10 +10,10 @@ import json
 import yaml
 import os
 from ament_index_python.packages import get_package_share_directory
-
+from tf2_msgs.msg import TFMessage
 from mrta_simulation.potential_field_controller import PotentialFieldController
 import math
-
+from rclpy.qos import qos_profile_sensor_data
 def get_yaw_from_quaternion(q):
     """
     Convert orientation quaternion to Euler Yaw angle
@@ -57,12 +57,12 @@ class RobotControllerNode(Node):
             10
         )
 
-        self.odom_sub = self.create_subscription(
-            Odometry,
-            f'/{robot_id}/odometry',
-            self.odom_callback,
-            10
-        )
+        # self.odom_sub = self.create_subscription(
+        #     Odometry,
+        #     f'/{robot_id}/odometry',
+        #     self.odom_callback,
+        #     10
+        # )
 
         self.task_sub = self.create_subscription(
             String, 
@@ -71,7 +71,12 @@ class RobotControllerNode(Node):
             10
         )
 
-        
+        self.gps_sub = self.create_subscription(
+            TFMessage,
+            f'/{robot_id}/ground_truth',
+            self.gps_callback,
+            qos_profile_sensor_data
+        )
 
         self.create_subscription(
             PoseStamped,
@@ -84,12 +89,7 @@ class RobotControllerNode(Node):
         self.broadcast_timer = self.create_timer(0.2, self.broadcast_position)
         self.get_logger().info(f'Robot Controller {robot_id} initialized.')
 
-        import numpy as np
-        # Give it a goal 2 meters forward and 2 meters left
-        self.current_goal = np.array([2.0, 2.0]) 
-        self.at_goal = False
-        self.get_logger().info(f"TEST MODE: Force goal set to {self.current_goal}")
-        # -------------------------------------
+        
 
         self.control_loop_timer = self.create_timer(0.1, self.control_loop)
 
@@ -126,6 +126,27 @@ class RobotControllerNode(Node):
         self.current_yaw = get_yaw_from_quaternion(msg.pose.pose.orientation)
 
         self.get_logger().info(f'Odom received: {self.current_pos}', throttle_duration_sec=1.0)
+
+    def gps_callback(self, msg):
+        
+        for t in msg.transforms:
+            if "world" not in t.header.frame_id:
+                continue
+            name = t.child_frame_id
+            if (self.robot_id in name or "differential" in name) and ("wheel" not in name) and ("caster" not in name):
+                tx = t.transform.translation.x
+                ty = t.transform.translation.y
+                tz = t.transform.translation.z
+
+                self.current_pos = np.array([tx, ty])
+                self.current_z = tz
+                
+                q = t.transform.rotation
+                t3 = +2.0 * (q.w * q.z + q.x * q.y)
+                t4 = +1.0 - 2.0 * (q.y * q.y + q.z * q.z)
+                self.current_yaw = math.atan2(t3, t4)
+                self.get_logger().info(f"GPS Lock: {self.current_pos}")
+                return
 
     def task_assignment_callback(self, msg):
         try:
@@ -172,57 +193,14 @@ class RobotControllerNode(Node):
 
         self.pos_pub.publish(msg)
 
-    # def control_loop(self):
-    #     velocity_global = self.pf_controller.compute_velocity_command(
-    #         robot_pos=self.current_pos,
-    #         goal_pos=self.current_goal,
-    #         obstacles=self.obstacles,
-    #         other_robots=list(self.other_robot_positions.values())
-    #     )
-    #     desired_heading = math.atan2(velocity_global[1], velocity_global[0])
-    #     heading_error = desired_heading - self.current_yaw
-    #     while heading_error > math.pi: heading_error -= 2 * math.pi
-    #     while heading_error < -math.pi: heading_error += 2 * math.pi
-    #     twist = Twist()
-    #     velocity_magnitude = np.linalg.norm(velocity_global)
-    #     twist.linear.x = velocity_magnitude * math.cos(heading_error)
-    #     k_angular = 2.0 
-    #     twist.angular.z = k_angular * heading_error
-    #     twist.linear.y = 0.0
-    #     if self.current_pos is None:
-    #         return
 
-    #     if self.current_goal is None or self.at_goal:
-    #         self.stop_robot()
-    #         return
-
-    #     distance_to_goal = np.linalg.norm(self.current_pos - self.current_goal)
-    #     if distance_to_goal < self.goal_threshold:
-    #         self.get_logger().info(f'Reached goal at {self.current_goal}')
-    #         self.at_goal = True
-    #         self.stop_robot()
-    #         return
-
-    #     other_positions = list(self.other_robot_positions.values())
-    #     velocity_2d = self.pf_controller.compute_velocity_command(
-    #         robot_pos = self.current_pos,
-    #         goal_pos = self.current_goal,
-    #         obstacles = self.obstacles,
-    #         other_robots = other_positions
-    #     )
-
-    #     if self.pf_controller.is_stuck():
-    #         self.get_logger().warn('Robot appears stuck! Adding perturbation ...')
-    #         velocity_2d += self.pf_controller.get_random_perturbation()
-
-    #     twist = self.pf_controller.create_twist_msg(velocity_2d, self.is_aerial)
-    #     self.cmd_vel_pub.publish(twist)
     def control_loop(self):
         if self.current_pos is None: return
         if self.current_goal is None or self.at_goal:
             self.stop_robot()
             return
-
+        diff = self.current_goal - self.current_pos
+        distance_to_goal = np.linalg.norm(diff)
         # 1. Get Global Velocity (2D)
         velocity_global = self.pf_controller.compute_velocity_command(
             robot_pos=self.current_pos,
@@ -239,6 +217,12 @@ class RobotControllerNode(Node):
 
         twist = Twist()
         velocity_magnitude = np.linalg.norm(velocity_global)
+        STOPPING_DISTANCE = 1.5
+        if distance_to_goal < STOPPING_DISTANCE:
+            self.at_goal = True
+            self.stop_robot()
+            self.pf_controller.reset_velocity()
+            self.get_logger().info(f"GOAL REACHED (Dist) : {distance_to_goal:.2f}. STOPPING.")
 
         if self.is_aerial:
             # === DRONE LOGIC (3D) ===
@@ -266,15 +250,34 @@ class RobotControllerNode(Node):
 
         else:
             # === TURTLEBOT LOGIC (2D Non-Holonomic) ===
-            twist.linear.x = velocity_magnitude * math.cos(heading_error)
+            MAX_SPEED = 0.5
+            MAX_TURN_SPEED = 1.0
+            GAIN_ANGULAR = 0.8
+            turn_cmd = GAIN_ANGULAR * heading_error
+            twist.angular.z = max(min(turn_cmd, MAX_TURN_SPEED), -MAX_TURN_SPEED)
+            if abs(heading_error) < (math.pi / 2):
+                # We are facing generally forward. Drive!
+                throttle = math.cos(heading_error)
+                
+                # Use the Potential Field magnitude, but cap it at MAX_SPEED
+                target_speed = min(velocity_magnitude, MAX_SPEED)
+                twist.linear.x = target_speed * throttle
+            else:
+                # We are facing backwards. STOP driving and just Turn.
+                # This prevents the "Reverse Spiral" of death.
+                twist.linear.x = 0.0
+
             twist.linear.y = 0.0 # No sliding
             twist.linear.z = 0.0 # No flying
-            twist.angular.z = 2.0 * heading_error
 
         self.cmd_vel_pub.publish(twist)
 
     def stop_robot(self):
         twist = Twist()
+        twist.linear.x = 0.0
+        twist.linear.y = 0.0
+        twist.angular.z = 0.0
+
         self.cmd_vel_pub.publish(twist)
 
 

@@ -4,7 +4,7 @@ import numpy as np
 from geometry_msgs.msg import Twist
 
 class PotentialFieldController:
-    def __init__(self, k_att=1.5, k_rep=8.0, d_safe=0.8, d_influence=3.0, max_vel=0.5, max_acc=2.0, dt = 0.1):
+    def __init__(self, k_att=1.5, k_rep=5.0, d_safe=1, d_influence=3.0, max_vel=0.5, max_acc=2.0, dt = 0.1, mass=10):
         self.k_att = k_att
         self.k_rep = k_rep
         self.d_safe = d_safe
@@ -16,7 +16,7 @@ class PotentialFieldController:
         self.prev_positions = []
         self.stuck_threshold = 0.05
         self.stuck_history_length = 20
-
+        self.mass = mass
 
     def compute_attractive_force(self, current_pos, goal_pos):
         diff = goal_pos - current_pos
@@ -28,7 +28,7 @@ class PotentialFieldController:
         force = self.k_att * diff
         return force
 
-    def compute_repulsive_force(self, current_pos, obstacle_pos, is_robot=False):
+    def compute_repulsive_force(self, current_pos, goal_pos, obstacle_pos, is_robot=False):
         diff = current_pos - obstacle_pos
         distance = np.linalg.norm(diff)
 
@@ -45,12 +45,25 @@ class PotentialFieldController:
             magnitude = self.k_rep * (1.0 / distance - 1.0/self.d_influence) * (1.0 / (distance**2))
 
         if is_robot:
-            magnitude *= 0.7
+            magnitude *= 1.5
 
         direction = diff/np.linalg.norm(diff)
+        direction_away = direction
         force = magnitude*direction
+        force_swirl = 0
+        if is_robot:
+            tangent_vector = np.array([-direction_away[1], direction_away[0]])
+            vec_to_goal = goal_pos - current_pos
+            cross_prod = direction_away[0] * vec_to_goal[1] - direction_away[1] * vec_to_goal[0]
+            swirl_strength = 1
 
-        return force
+            if cross_prod > 0:
+                force_swirl = magnitude * swirl_strength * tangent_vector
+            else:
+                force_swirl = magnitude * swirl_strength * -tangent_vector 
+
+
+        return force + force_swirl
         return zeros(len(force))
 
     def compute_velocity_command(self, robot_pos, goal_pos, obstacles, other_robots):
@@ -63,17 +76,17 @@ class PotentialFieldController:
 
         for obs_pos in obstacles:
             obs_pos = np.array(obs_pos)
-            f_repulsive_obs += self.compute_repulsive_force(robot_pos, obs_pos, is_robot=False)
+            f_repulsive_obs += self.compute_repulsive_force(robot_pos, goal_pos, obs_pos, is_robot=False)
 
         f_repulsive_robots = np.zeros(2)
 
         for other_pos in other_robots:
             other_pos = np.array(other_pos)
-            f_repulsive_robots += self.compute_repulsive_force(robot_pos, other_pos, is_robot=True)
+            f_repulsive_robots += self.compute_repulsive_force(robot_pos, goal_pos, other_pos, is_robot=True)
 
         f_total = f_attractive + f_repulsive_obs + f_repulsive_robots
         # f_total = f_attractive
-        acceleration = f_total
+        acceleration = f_total/self.mass
 
         acc_magnitude = np.linalg.norm(acceleration)
         if acc_magnitude > self.max_acc:

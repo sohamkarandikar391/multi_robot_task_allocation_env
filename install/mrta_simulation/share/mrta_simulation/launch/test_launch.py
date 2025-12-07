@@ -180,17 +180,20 @@ def generate_launch_description():
                     bridge_arguments.append(f'/model/{robot_name}/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry')
                     
                     # 3. TF (Optional)
-                    bridge_arguments.append(f'/model/{robot_name}/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V')
+                    # bridge_arguments.append(f'/model/{robot_name}/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V')
 
-                    # --- REMAPPINGS (Rename topics for the Controller) ---
-                    # Rename /model/X/odometry -> /X/odometry
+                    bridge_arguments.append(
+                        f'/model/{robot_name}/pose@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V'
+                    )
+                   
                     bridge_remappings.append(
                         (f'/model/{robot_name}/odometry', f'/{robot_name}/odometry')
                     )
-                    # Rename /model/X/cmd_vel -> /X/cmd_vel (Ensure Gazebo gets the message)
                     bridge_remappings.append(
                         (f'/model/{robot_name}/cmd_vel', f'/{robot_name}/cmd_vel')
                     )
+                    bridge_remappings.append((f'/model/{robot_name}/pose', f'/{robot_name}/ground_truth'))
+
 
     # 2. GAZEBO SIMULATION
     gazebo = IncludeLaunchDescription(
@@ -236,9 +239,42 @@ def generate_launch_description():
         output='screen'
     )
 
+    robot_controller_nodes = []
+
+    # We read the config again to generate controller nodes
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
+        
+        if 'species' in config:
+            for species_name, data in config['species'].items():
+                count = data.get('count', 0)
+                is_aerial = (species_name == "crazyflie") # Check if drone
+                
+                for i in range(count):
+                    robot_name = f"{species_name}_{i}"
+                    
+                    # Create the Controller Node for this specific robot
+                    controller_node = Node(
+                        package='mrta_simulation',
+                        executable='robot_controller',
+                        name=f'controller_{robot_name}',
+                        # Pass robot_name and the --aerial flag if needed
+                        arguments=[robot_name] + (['--aerial'] if is_aerial else []),
+                        output='screen'
+                    )
+                    robot_controller_nodes.append(controller_node)
+
+    # Wrap them in a Timer so they wait 10 seconds for Gazebo to finish spawning
+    start_controllers = TimerAction(
+        period=10.0,
+        actions=robot_controller_nodes
+    )
+
+
     return LaunchDescription([
         gazebo,
         bridge_service,
         spawn_scenario,
         robot_bridge_node,
-    ])
+        start_controllers
+    ] )

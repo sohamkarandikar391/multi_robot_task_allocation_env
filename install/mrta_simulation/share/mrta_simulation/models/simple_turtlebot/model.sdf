@@ -166,5 +166,15 @@
             <joint_name>left_wheel_joint</joint_name>
         </plugin>
 
+        <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+            <publish_link_pose>true</publish_link_pose> <publish_visual_pose>false</publish_visual_pose>
+            <publish_collision_pose>false</publish_collision_pose>
+            <publish_sensor_pose>false</publish_sensor_pose>
+            
+            <publish_nested_model_pose>true</publish_nested_model_pose> <use_pose_vector_msg>true</use_pose_vector_msg>
+            <static_publisher>false</static_publisher>
+            <static_update_frequency>100</static_update_frequency>
+        </plugin>
+
     </model>
 </sdf>

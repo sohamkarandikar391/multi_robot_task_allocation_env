@@ -4,16 +4,16 @@ world_config:
   size_y: 20.0
   
 species:
-  crazyflie_species:
+  crazyflie:
     type: "crazyflie"
-    count: 0
+    count: 4
     depot_position: [-7.0, -7.0, 1.5] 
     skills: [1, 1, 0, 0, 0]
     color: [1.0, 0.0, 0.0, 1.0]
     
-  turtlebot_species:
+  turtlebot3_burger:
     type: "turtlebot3_burger"
-    count: 1
+    count: 4
     depot_position: [7.0, 7.0, 0.0]  
     skills: [0, 0, 1, 1, 1]
     color: [0.0, 0.0, 1.0, 1.0]

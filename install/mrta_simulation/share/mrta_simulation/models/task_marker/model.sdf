@@ -15,14 +15,14 @@
           <diffuse>1 1 0 1</diffuse>
         </material>
       </visual>
-      <collision name="collision">
+      <!-- <collision name="collision"> -->
         <geometry>
           <cone>
             <radius>0.3</radius>
             <length>0.6</length>
           </cone>
         </geometry>
-      </collision>
+      <!-- </collision> -->
     </link>
   </model>
 </sdf>
