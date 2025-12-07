@@ -6,7 +6,7 @@ A ROS2 + Gazebo simulation framework for multi-robot task allocation using deep 
   <img src="https://raw.githubusercontent.com/sohamkarandikar391/multi_robot_task_allocation_env/main/docs/scenario_screenshot.png" alt="Simulation Overview" width="600"/>
 </p>
 <p align="center"><em>Multi-robot team collaborating on spatially distributed tasks with obstacles</em></p>
-Watch the full simulation in action: [YouTube Demo](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+Watch the full simulation in action: [YouTube Demo](https://www.youtube.com/watch?v=Crc_LIuiWpk)
 
 
 ---
