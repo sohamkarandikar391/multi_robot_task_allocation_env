@@ -30,9 +30,9 @@ This project implements a complete simulation environment for **heterogeneous mu
 
 **World Configuration:**
 - **Dimensions**: 20m × 20m workspace
-- **Obstacles**: Static obstacles requiring dynamic path planning
-- **Depot Locations**: Species-specific home bases for robot deployment
-- **Task Sites**: Spatially distributed locations requiring team coordination
+- **Obstacles**: Static obstacles requiring dynamic path planning (Orange obstacles are short and block only ground robots while Purple obstacles are tall that block aerial and ground robots from going through them)
+- **Depot Locations**: Species-specific home bases for robot deployment (Marked with green cones in the environment)
+- **Task Sites**: Spatially distributed locations requiring team coordination (Marked with yellow cones in the environment)
 
 **Robot Species:**
 1. **Red TurtleBots** (Ground robots)
