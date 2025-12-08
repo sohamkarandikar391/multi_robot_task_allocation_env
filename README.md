@@ -125,7 +125,7 @@ mkdir -p ~/mrta_ws/src
 cd ~/mrta_ws/src
 
 # Clone repository
-git clone https://github.com/yourusername/mrta_simulation.git
+git clone https://github.com/sohamkarandikar391/mrta_simulation.git
 
 # Clone RL paper implementation
 cd mrta_simulation
