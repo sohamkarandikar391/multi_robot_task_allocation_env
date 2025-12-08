@@ -46,7 +46,7 @@ This project implements a complete simulation environment for **heterogeneous mu
    - Count: 4 robots
    - Max velocity: 0.5 m/s
 
-3. **Green Quadcopters** (Aerial robots)
+3. **Green Turtlebots** (Ground robots)
    - Skills: `[0, 0, 1, 1, 0]`
    - Count: 3 robots
    - Operating altitude: 2.0m
@@ -54,14 +54,13 @@ This project implements a complete simulation environment for **heterogeneous mu
 **Task Characteristics:**
 - Each task has a **skill requirement vector** (e.g., `[1, 0, 0, 1, 0]`)
 - **Team assembly required**: Tasks start only when combined robot skills ≥ requirements
-- **Variable duration**: Tasks take 5-15 seconds to complete
+- **Variable duration**: Tasks take 15-30 seconds to complete
 - **Sequential execution**: Robots follow computed routes through multiple tasks
 
 ### Environment Dynamics
 
 **Motion Control:**
 - **Ground Robots**: Differential drive kinematics with non-holonomic constraints
-- **Aerial Robots**: Holonomic control with PID altitude stabilization
 - **Potential Field Navigation**: Attractive forces to goals, repulsive forces from obstacles and other robots
 - **Collision Avoidance**: Dynamic obstacle detection with safety margins
 
@@ -94,7 +93,6 @@ This implementation is based on the work by **Chen et al.**:
 - Integrated trained RL policy into ROS2/Gazebo simulation
 - Added real-world physics and navigation constraints
 - Implemented distributed robot controllers with potential field planning
-- Extended to mixed ground/aerial robot teams
 
 ---
 
